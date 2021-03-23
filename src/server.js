@@ -76,3 +76,6 @@ app.get('/list', (req, res) => {
   res.send(JSON.stringify(student_list));
 });
 
+app.get('/test', (req, res) => {
+  res.send("hello");
+})
