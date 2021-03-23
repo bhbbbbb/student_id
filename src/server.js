@@ -16,7 +16,7 @@ app.use(cors());
 // start the server
 // 啟動伺服器
 app.listen(port, () => {
-  console.log(`listening on port: ${port}`);
+  console.log(`listening on port: ${port}, at ` + __dirname);
 })
 
 app.use(express.static(__dirname + "/../public"));

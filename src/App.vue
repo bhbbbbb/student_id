@@ -68,7 +68,7 @@ export default {
         id_to_add: this.id_to_add,
         name_to_add: this.name_to_add
       };
-      axios.post('http://localhost:2222/add', data_to_send).then((res) => {
+      axios.post('http://luffy.ee.ncku.edu.tw:2222/add', data_to_send).then((res) => {
         this.Student_List = res.data;
         // console.log(Student_List);
       }).catch((err) => {
@@ -79,7 +79,7 @@ export default {
       let data_to_send = {
         id_to_del: this.id_to_del,
       };
-      axios.post('http://localhost:2222/del', data_to_send).then((res) => {
+      axios.post('http://luffy.ee.ncku.edu.tw:2222/del', data_to_send).then((res) => {
         this.Student_List = res.data;
         // console.log(Student_List);
       }).catch((err) => {
