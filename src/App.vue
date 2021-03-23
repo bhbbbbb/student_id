@@ -35,7 +35,8 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import axios from "axios";
-var Student_List = require("./assets/students.json");
+const Server_Url = "http://luffy.ee.ncku.edu.tw:2222";
+// var Student_List = require("./assets/students.json");
 export default {
   name: 'App',
   components: {
@@ -44,7 +45,16 @@ export default {
 
   data() {
     return {
-      Student_List,
+      Student_List: () => {
+        let tmp;
+        axios.get(Server_Url + "/list").then((res)=>{
+          tmp = res.data;
+        }).catch((err) => {
+          console.log(err);
+        });
+        console.log("tmp=", tmp);
+        return tmp;
+      },
       displayList: true,
       search_for_id: "",
       id_to_add: "",
