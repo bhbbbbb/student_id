@@ -45,16 +45,7 @@ export default {
 
   data() {
     return {
-      Student_List: () => {
-        let tmp;
-        axios.get(Server_Url + "/list").then((res)=>{
-          tmp = res.data;
-        }).catch((err) => {
-          console.log(err);
-        });
-        console.log("tmp=", tmp);
-        return tmp;
-      },
+      Student_List: null,
       displayList: true,
       search_for_id: "",
       id_to_add: "",
@@ -78,7 +69,7 @@ export default {
         id_to_add: this.id_to_add,
         name_to_add: this.name_to_add
       };
-      axios.post('http://luffy.ee.ncku.edu.tw:2222/add', data_to_send).then((res) => {
+      axios.post(Server_Url + '/add', data_to_send).then((res) => {
         this.Student_List = res.data;
         // console.log(Student_List);
       }).catch((err) => {
@@ -89,13 +80,25 @@ export default {
       let data_to_send = {
         id_to_del: this.id_to_del,
       };
-      axios.post('http://luffy.ee.ncku.edu.tw:2222/del', data_to_send).then((res) => {
+      axios.post(Server_Url + '/del', data_to_send).then((res) => {
         this.Student_List = res.data;
         // console.log(Student_List);
       }).catch((err) => {
         console.log(err);
       });
+    },
+    Get_List() {
+      // console.log("inn");
+      axios.get(Server_Url + "/list").then((res)=>{
+        // console.log(res);
+        this.Student_List = res.data;
+      }).catch((err) => {
+        console.log(err);
+      });
     }
+  },
+  created() {
+    this.Get_List();
   }
 }
 </script>
